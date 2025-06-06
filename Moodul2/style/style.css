@@ -1,0 +1,485 @@
+/* global styles */
+
+h1 {
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4.688rem;
+    color: white;
+    line-height: 1;
+}
+
+h2 {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.875rem;
+    color: white;
+}
+
+h3 {
+    font-family: "Aboreto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.5rem;
+}
+
+h4 {
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.375rem;
+    color: black; 
+}
+
+h5 {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.25rem;
+    color: black;
+}
+
+p {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.125rem;
+    color: black;
+}
+
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+  }
+
+button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px 45px;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    width: 100%;
+    height: 56px;
+}
+
+.button-secondary {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    padding: 15px 20px;
+    font-size: 1rem;
+    width: max-content;
+    height: 45px;
+    line-height: 0;
+}
+
+.button-third {
+    background-color: white;
+    border-radius: 30px;
+    border: 3px solid black;
+    padding: 15px 20px;
+    color: black;
+    width: max-content;
+    height: 56px;
+    line-height: 0;
+    font-weight: 800;
+}
+
+.button-forth {
+    background-color: rgb(0, 0, 0);
+    border-radius: 30px;
+    border: 3px solid black;
+    padding: 15px 20px;
+    color: rgb(255, 255, 255);
+    width: max-content;
+    height: 56px;
+    line-height: 0;
+    font-weight: 800;
+}
+
+#hero {
+    background-image: url("../media/Tuulik2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.hero_tekst {
+    display: flex;
+    flex-direction: column;
+    margin: 200px 50px;
+}
+
+.hero_tekst h1 {
+    margin-top: 200px;
+    margin-bottom: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 100px;
+}
+
+.navigatsioon {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.navigatsioon a {
+    text-decoration: none;
+}
+
+.navigatsioon p {
+    color: white;
+    font-weight: 500;
+}
+
+.ajaloo_sektsioon {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-top: 150px;
+    justify-content: center;
+}
+
+.ajaloo_pildid {
+    display: grid;
+    grid-template-columns: 292px 292px;
+    grid-template-rows: repeat(2, 292px);
+    gap: 20px;
+}
+
+.tuuliku_pilt {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.puidu_pilt {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.metsa_pilt {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.ajaloo_tekst {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+}
+
+.ajaloo_tekst h4 {
+    margin-bottom: 30px;
+}
+
+.ajaloo_tekst p {
+    margin-bottom: 15px;
+    color: black;
+}
+
+#inimesed {
+    margin: 150px 200px;
+    justify-content: center;
+    text-align: center;
+}
+
+.inimesed_sektsioon {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.inimesed_tekst {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inimesed_pildid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inimene_pilt {
+    max-width: 400px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.inimesed_tekst h5 {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    max-width: 1200px;
+}
+
+.inimesed_pildid h4 {
+    margin-top: 10px;
+}
+
+.inimesed_pildid h5 { 
+    margin-bottom: 10px;
+}
+
+.inimesed_pildid p { 
+    max-width: 375px;
+    color: black;
+    text-align: center;
+}
+
+#tegevused {
+    margin: 150px 200px;
+    justify-content: center;
+    text-align: center;
+}
+
+.tegevused_tekst {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    max-width: 1100px;
+}
+
+.tegevused_pildid {
+    display: grid;
+    grid-template-columns: 400px 350px 400px;
+    grid-template-rows: 323px 258px;
+    gap: 20px;
+    justify-content: center;
+}
+
+.ekskursioon {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    grid-row: 1 / 3; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    background-image: url("../media/tuulik1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: space-between;
+}
+
+.tootuba {
+    display: flex;
+    flex-direction: column;
+    grid-column: 2;
+    grid-row: 1; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    background-image: url("../media/tootuba.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: space-between;
+}
+
+.matk {
+    display: flex;
+    flex-direction: column;
+    grid-column: 2;
+    grid-row: 2; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    background-image: url("../media/matk.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: space-between;
+}
+
+.oobimine {
+    display: flex;
+    flex-direction: column;
+    grid-column: 3;
+    grid-row: 1 / 3; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    background-image: url("../media/oobimine.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: space-between;
+}
+
+.juhi_profiil {
+    display: grid;
+    grid-template-columns: 30px max-content;
+    gap: 10px;
+    align-items: center;
+    padding: 30px;
+}
+
+.juhi_profiil img {
+    grid-column: 1;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    border: 2px solid white;
+}
+
+.juhi_nimi {
+    display: flex;
+    flex-direction: column;
+}
+
+.tegevused_pildid h4, p {
+    color: white;
+    text-align: left;
+}
+
+.tegevused_pildid h4 {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.tegevused_pildid p {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.hind_aeg {
+    display: flex;
+    gap: 10px;
+}
+
+.ikoon_tekst {
+    display: flex;
+    gap: 4px;
+}
+
+.tegevused_info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 30px;
+}
+
+.tegevused_tekst h5 {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    max-width: 1200px;
+}
+
+.oobimine_tekst {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+}
+
+.grupi_tekst p {
+    color: black;
+    text-align: center;
+}
+
+.grupi_tekst {
+    display: flex;
+    margin-top: 20px;
+    max-width: 1000px;
+    justify-self: center;
+}
+
+#annetus {
+    display: flex;
+    margin: 100px;
+    justify-self: center;
+}
+
+.annetus_tekst {
+    max-width: 1000px;
+    text-align: center;
+}
+
+.annetus_tekst h5 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.annetus_tekst button {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.annetus_nupud {
+    display: flex;
+    gap: 20px;
+    justify-self: center;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px;
+    gap: 100px;
+}
+
+footer p {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.jaluse_sisu {
+    display: flex;
+    gap: 150px;
+}
+
+.jaluse_sisu li {
+    list-style: none;
+}
+
+.sotsmeedia_ikoonid {
+    display: flex;
+    gap: 15px;
+}
+
+.eraldusriba {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 25px;
+}

@@ -1,4 +1,7 @@
 /* global styles */
+body { 
+    margin: 0;
+}
 
 h1 {
     font-family: "Cedarville Cursive", cursive;
@@ -124,10 +127,20 @@ button:hover {
     border: 3px solid black;
     color: black;
 }
+
 header {
     display: flex;
     justify-content: space-between;
     padding: 50px 100px;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo2 {
+    display: none;
 }
 
 .navigatsioon {
@@ -217,8 +230,8 @@ section {
 footer {
     display: flex;
     flex-direction: column;
-    padding: 30px 100px;
     gap: 100px;
+    margin: 100px;
 }
 
 footer p {
@@ -258,4 +271,233 @@ footer p {
     min-height: 100px;
     left: -20px;
     position: relative;
+}
+
+
+
+
+/* Telefoni vaade */
+@media screen and (max-width: 667px) {
+    
+    h1 {
+        font-size: 1.5rem; /* 20% väiksem kui 4.688rem */
+    }
+    
+    h2 {
+        font-size: 0.875rem; /* 20% väiksem kui 1.875rem */
+    }
+    
+    h3 {
+        font-size: 1.875rem; /* 20% väiksem kui 3.5rem */
+    }
+    
+    h4 {
+        font-size: 1.5rem; /* 20% väiksem kui 2.375rem */
+        line-height: 1.2;
+    }
+    
+    h5 {
+        font-size: 1rem; /* 20% väiksem kui 1.25rem */
+    }
+    
+    p {
+        font-size: 0.875rem; /* 20% väiksem kui 1.125rem */
+    }
+
+    section {
+        margin: 25px;
+    }
+
+    footer {
+        margin: 25px;
+        gap: 50px;
+        align-content: center;
+    }
+
+    footer h4 {
+        margin-bottom: 20px;
+    }
+    
+    .jaluse_sisu {
+        gap: 45px;
+        align-self: center;
+    }
+
+    .eraldusriba {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .button-forth, .button-third, button, .button-secondary {
+        font-size: 0.875rem;
+        height: 56px;
+        padding: 15;
+    }
+
+
+}
+
+@media screen and (max-width: 900px) {
+    
+    header {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 20px;
+        align-content: space-between;
+        padding: 25px;
+    }
+
+    .kontakti_pilt {
+        display: none;
+    }
+
+    .kontakt {
+        flex-direction: column;
+        text-align: center;
+        max-width: 600px;
+    }
+
+    #kontakt {
+        display: flex;
+        gap: 0;
+        margin: 25px;
+        justify-content: center;
+    }
+    
+    .inputid {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .inputi_stiil {
+        margin-bottom: 20px;
+    }
+    
+    .kontakti_info {
+        text-align: left;
+    }
+
+    .button-third {
+        width: 100%;
+        max-width: 400px;
+        align-self: center;
+    }
+
+    header {
+        display: grid;
+        grid-template-columns: 35px max-content 1fr 35px;
+        gap: 20px;
+        align-content: space-between;
+        padding: 25px;
+        align-items: center;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .logo2 {
+        display: flex;
+    }
+
+    .logo_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close {
+        padding-right: 50px;
+    }
+
+    .form_inputs {
+        max-width: 600px;
+    }
+
+
+}
+
+
+/* Burgermenu stiil */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+
+/* Mobiili vaate burger menüü */
+.mobile-nav {
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    background: white;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: max-content;
+}
+
+.mobile-nav-header {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    margin: 50px;
+}
+
+.mobile-nav.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.mobile-nav a {
+    text-decoration: none;
+}
+
+.mobile-nav p {
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+}
+
+.mobile-nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+    margin-top: 200px;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+}
+
+.mobile-nav button:hover {
+    background: white;
+    color: #333;
+}
+
+/* Media query 900px ja väiksemaks */
+@media screen and (max-width: 900px) {
+
+    .navigatsioon {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
 }

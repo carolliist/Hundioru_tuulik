@@ -10,18 +10,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cedarville+Cursive&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <script>
+        function toggleMobileMenu() {
+            const burger = document.querySelector('.burger-menu');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            burger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Sulge menu kui klõpsatakse väljas
+        document.addEventListener('click', function(event) {
+            const burger = document.querySelector('.burger-menu');
+            const mobileNav = document.getElementById('mobileNav');
+            const header = document.querySelector('header');
+            
+            if (!header.contains(event.target)) {
+                burger.classList.remove('active');
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Sulge menu kui akna suurus muutub
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 900) {
+                const burger = document.querySelector('.burger-menu');
+                const mobileNav = document.getElementById('mobileNav');
+                burger.classList.remove('active');
+                mobileNav.classList.remove('active');
+            }
+        });
+    </script>
+
 </head>
 <body>
      <section id="hero">
         <div class="overlay">
             <header>
-                <a href="/Moodul2/index.html"><img src="media/desktop_logo.svg" alt="Logo"></a>
+                <div class="burger-menu" onclick="toggleMobileMenu()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+                <a href="/Moodul2/index.html"><img src="media/desktop_logo.svg" alt="Logo" class="logo"></a>
+                <a href="/Moodul2/index.html" class="logo_container"><img src="media/logo2_hele.svg" alt="Logo" class="logo2" ></a>
                 <nav class="navigatsioon">
                     <a href="/Moodul2/pood.html"><p>Pood</p></a>
                     <a href="/Moodul2/annetus.html"><p>Annetamine</p></a>
                     <a href="/Moodul2/kontakt.html"><button>Kirjuta meile</button></a>
                     <img src="media/ostukorv.svg" alt="Ostukorv" height="20px">
                  </nav>
+
+
+                 <!-- Mobile navigatsioon -->
+                <nav class="mobile-nav" id="mobileNav">
+                    <div class="mobile-nav-header">
+                        <div></div>
+                        <img src="media/logo2_tume.svg" alt="Logo" class="logo_container">
+                        <div onclick="toggleMobileMenu()" class="close">
+                            <img src="media/close.svg" alt="close">
+                        </div>
+                    </div>
+
+                    <div class="mobile-nav-content">
+                        <a href="pood.html"><p>Pood</p></a>
+                        <a href="annetus.html"><p>Annetamine</p></a>
+                        <a href="kontakt.html"><p>Kirjuta meile</p></a>
+                        <div class="ostukorv"><img src="media/must_ostukorv.svg" alt="Ostukorv" height="20px"></div>
+                    </div>
+                </nav>
+                
             </header>
             <div class="hero_tekst">
                 <h1>Too tuulikusse elu tagasi</h1>
@@ -30,10 +89,6 @@
             </div>
         </div>    
     </section>
-
-    <div class="eraldusriba">
-        <img src="media/eraldusriba.svg" alt="sektsiooni lõpp">
-    </div>
 
     <section id="annetused">
         <div>
@@ -112,8 +167,8 @@
             <div class="makselingid border">
                 <h5>Makselingid</h5>
                 <div class="maksenupud">
-                    <img src="media/seb_makselink.svg" alt="SEB makselink" width="56px" class="maksenupp">
                     <img src="media/paypal_makselink.png" alt="Paypal makselink" height="30px"  class="maksenupp">
+                    <img src="media/seb_makselink.svg" alt="SEB makselink" width="56px" class="maksenupp">
                     <img src="media/swedbank_makselink.svg" alt="Swedbank makselink" width="131" class="maksenupp">
                     <img src="media/lhv_makselink.png" alt="LHV makselink" height="30px" width="70px" class="maksenupp">
                 </div>

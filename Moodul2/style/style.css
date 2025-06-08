@@ -1,4 +1,7 @@
 /* global styles */
+body { 
+    margin: 0;
+}
 
 h1 {
     font-family: "Cedarville Cursive", cursive;
@@ -159,7 +162,6 @@ button:hover {
 }
 
 .hero_tekst h1 {
-    
     margin-bottom: 20px;
 }
 
@@ -168,6 +170,14 @@ header {
     justify-content: space-between;
     padding: 50px 100px;
     position: relative;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo2 {
+    display: none;
 }
 
 .navigatsioon {
@@ -188,9 +198,10 @@ header {
 #ajalugu {
     display: flex;
     gap: 50px;
+    margin: 100px;
+    margin-left: 0px;
     align-items: center;
     justify-content: center;
-    margin: 100px;
 }
 
 .ajaloo_pildid {
@@ -201,7 +212,7 @@ header {
     aspect-ratio: 1/1;
     max-width: 700px;
     max-height: 600px;
-}
+}   
 
 .tuuliku_pilt {
     grid-column: 1 / 2;
@@ -233,7 +244,7 @@ header {
 .ajaloo_tekst {
     display: flex;
     flex-direction: column;
-    max-width: 900px;
+    max-width: 600px;
     min-width: 400px;
 }
 
@@ -277,6 +288,8 @@ header {
     object-fit: cover;
     border-radius: 30px;
     filter: brightness(75%);
+    max-width: 400px;
+    max-height: 500px;
 }
 
 .inimesed_tekst h5 {
@@ -465,20 +478,21 @@ header {
     flex-direction: column;
     padding: 30px;
     gap: 20px;
+
 }
 
 .grupi_tekst p {
     color: black;
     text-align: center;
+    max-width: 1000px;
 }
 
 .grupi_tekst {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    max-width: 1000px;
-    justify-self: center;
     align-items: center;
+    width: 100%;
 }
 
 #annetus {
@@ -517,8 +531,8 @@ header {
 footer {
     display: flex;
     flex-direction: column;
-    padding: 30px 100px;
     gap: 100px;
+    margin: 100px;
 }
 
 footer p {
@@ -560,6 +574,7 @@ footer p {
     position: relative;
 }
 
+
 /* Telefoni vaade */
 @media screen and (max-width: 667px) {
     
@@ -588,14 +603,9 @@ footer p {
         height: 300px;
     }
 
-
     .inimene_pilt {
         width: 60vw; 
         height: 80vw; 
-    }
-
-    .jaluse_sisu {
-        gap: 20px;
     }
 
     h1 {
@@ -625,6 +635,7 @@ footer p {
 
     #ajalugu {
         margin: 25px;
+        margin-top: 100px;
     }
 
     #inimesed {
@@ -634,12 +645,44 @@ footer p {
     #tegevused {
         margin: 25px;
     }
+
+    footer {
+        margin: 25px;
+        gap: 50px;
+        align-content: center;
+    }
+
+    footer h4 {
+        margin-bottom: 20px;
+    }
+    
+    .jaluse_sisu {
+        gap: 45px;
+        align-self: center;
+    }
+
+    .eraldusriba {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .button-forth, .button-third, button, .button-secondary {
+        font-size: 0.875rem;
+        height: 40px;
+        padding: 15;
+    }
+
+    
 }
 
 @media screen and (max-width: 900px) {
     #ajalugu {
         flex-direction: column-reverse;
         text-align: center;
+        margin: 25px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
     }
 
     .ajaloo_tekst {
@@ -650,7 +693,58 @@ footer p {
     #ajalugu p {
         text-align: center;
     }
+    
 
+    .ajaloo_pildid {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-left: calc(-100vw + 50%);
+        margin-right: calc(-100vw + 50%);
+        position: relative;
+        gap: 10px;
+        justify-content: center;
+        height: 250px;
+        min-width: 300px;
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+
+    .ajaloo_pildid img {
+        width: 170px;
+        height: 250px;
+        aspect-ratio: 3/5; 
+        height: auto; 
+        flex-shrink: 0; 
+        object-fit: cover;
+    }
+
+    header {
+        display: grid;
+        grid-template-columns: 35px max-content 1fr 35px;
+        gap: 20px;
+        align-content: space-between;
+        padding: 25px;
+        align-items: center;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .logo2 {
+        display: flex;
+    }
+
+    .logo_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close {
+        padding-right: 50px;
+    }
 }
 
 
@@ -682,7 +776,7 @@ footer p {
     position: absolute;
     top: 0px;
     right: 0;
-    background: rgba(255, 255, 255, 0.50);
+    background: white;
     backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     width: 100%;
@@ -691,7 +785,7 @@ footer p {
 
 .mobile-nav-header {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 40px 1fr 40px;
     width: 100%;
     align-items: center;
     justify-items: center;
@@ -711,6 +805,7 @@ footer p {
 
 .mobile-nav p {
     color: rgb(0, 0, 0);
+    font-size: 2rem;
 }
 
 .mobile-nav-content {

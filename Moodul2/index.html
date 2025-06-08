@@ -48,33 +48,38 @@
     <section id="hero">
         <div class="overlay">
             <header>
-                <a href="/Moodul2/index.html"><img src="media/desktop_logo.svg" alt="Logo"></a>
+                <div class="burger-menu" onclick="toggleMobileMenu()">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+                <a href="/Moodul2/index.html"><img src="media/desktop_logo.svg" alt="Logo" class="logo" ></a>
+                <a href="/Moodul2/index.html" class="logo_container"><img src="media/logo2_hele.svg" alt="Logo" class="logo2" ></a>
                 <nav class="navigatsioon">
                     <a href="/Moodul2/pood.html"><p>Pood</p></a>
                     <a href="/Moodul2/annetus.html"><p>Annetamine</p></a>
                     <a href="/Moodul2/kontakt.html"><button>Kirjuta meile</button></a>
                     <img src="media/ostukorv.svg" alt="Ostukorv" height="20px">
                 </nav>
-                 <div class="burger-menu" onclick="toggleMobileMenu()">
-                    <div class="burger-line"></div>
-                    <div class="burger-line"></div>
-                    <div class="burger-line"></div>
-                </div>
+                 
 
                 <!-- Mobile navigatsioon -->
                 <nav class="mobile-nav" id="mobileNav">
                     <div class="mobile-nav-header">
-                        <img src="media/desktop_logo.svg" alt="Logo">
-                        <div onclick="toggleMobileMenu()">X</div>
+                        <div></div>
+                        <img src="media/logo2_tume.svg" alt="Logo" class="logo_container">
+                        <div onclick="toggleMobileMenu()" class="close">
+                            <img src="media/close.svg" alt="close">
+                        </div>
                     </div>
 
                     <div class="mobile-nav-content">
-                        <a href="#pood"><p>Pood</p></a>
-                        <a href="#annetamine"><p>Annetamine</p></a>
-                        <a href="#pood"><p>Kirjuta meile</p></a>
-                        <div class="ostukorv"><img src="media/ostukorv.svg" alt="Ostukorv" height="20px"></div>
+                        <a href="pood.html"><p>Pood</p></a>
+                        <a href="annetus.html"><p>Annetamine</p></a>
+                        <a href="kontakt.html"><p>Kirjuta meile</p></a>
+                        <div class="ostukorv"><img src="media/must_ostukorv.svg" alt="Ostukorv" height="20px"></div>
                     </div>
-
+                </nav>
             </header>
             <div class="hero_tekst">
                 <h1>Seal, kus tuul ei vaiki</h1>
@@ -82,10 +87,6 @@
             </div>
         </div>    
     </section>
-    
-    <div class="eraldusriba">
-        <img src="media/eraldusriba.svg" alt="sektsiooni lõpp">
-    </div>
 
     <section id="ajalugu">
         <div class="ajaloo_pildid">
@@ -100,9 +101,6 @@
                 <p>Hundioru tuulik rajati 1894. aastal meistrimees Jaan Trummi eestvedamisel, kui piirkonda tekkis vajadus kohaliku viljajahvatamise koha järele. Aastakümnete jooksul kujunes sellest paigast palju enamat kui lihtsalt tuulik: veskikoda, kogukonnakeskus ja kohtumispaik.</p>
                 <p>Ajapikku jäi tuulik vaikseks, kuid 1980ndatel alustati selle taastamist. Siim Tormi eestvedamise, andsid kohalikud kunstnikud, käsitöölised ja õpetajad paigale uue hingamise. Taastati ruumid, hakkasid toimuma kontserdid, töötoad ja näitused.</p>
                 <p>Täna hoolitseb Hundioru eest noor muinsuskaitse huviline Kertu Laur, kes koos kogukonnaga hoiab tuuliku uksed avatud. Tuulik on avatud kõigile, kes soovivad osa saada meie loost: tulla vaatama, õppima, meisterdama või lihtsalt vaikusese keskele aega veetma. Iga külastusega hoitakse Hundioru tuuliku tiivad liikumas.</p>
-            </div>
-            <div>
-                Interaktiivne element
             </div>
         </div>
     </section>

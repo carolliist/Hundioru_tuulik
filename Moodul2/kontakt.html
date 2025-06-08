@@ -10,23 +10,79 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cedarville+Cursive&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<script>
+    function toggleMobileMenu() {
+        const burger = document.querySelector('.burger-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        burger.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+    }
+
+    // Sulge menu kui klõpsatakse väljas
+    document.addEventListener('click', function(event) {
+        const burger = document.querySelector('.burger-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        const header = document.querySelector('header');
+        
+        if (!header.contains(event.target)) {
+            burger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        }
+    });
+
+    // Sulge menu kui akna suurus muutub
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 900) {
+            const burger = document.querySelector('.burger-menu');
+            const mobileNav = document.getElementById('mobileNav');
+            burger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        }
+    });
+</script>
+
 </head>
 <body>
     <header>
-        <a href="/Moodul2/index.html"><img src="media/must_logo.svg" alt="Logo"></a>
+        <div class="burger-menu" onclick="toggleMobileMenu()">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+        <a href="/Moodul2/index.html"><img src="media/must_logo.svg" alt="Logo" class="logo" ></a>
+        <a href="/Moodul2/index.html" class="logo_container"><img src="media/logo2_tume.svg" alt="Logo" class="logo2" ></a>
         <nav class="navigatsioon">
             <a href="/Moodul2/pood.html"><p>Pood</p></a>
             <a href="/Moodul2/annetus.html"><p>Annetamine</p></a>
             <a href="/Moodul2/kontakt.html"><button>Kirjuta meile</button></a>
             <img src="media/must_ostukorv.svg" alt="Ostukorv" height="20px">
         </nav>
+
+        <!-- Mobile navigatsioon -->
+        <nav class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-header">
+                <div></div>
+                <img src="media/logo2_tume.svg" alt="Logo" class="logo_container">
+                <div onclick="toggleMobileMenu()" class="close">
+                    <img src="media/close.svg" alt="close">
+                </div>
+            </div>
+
+            <div class="mobile-nav-content">
+                <a href="pood.html"><p>Pood</p></a>
+                <a href="annetus.html"><p>Annetamine</p></a>
+                <a href="kontakt.html"><p>Kirjuta meile</p></a>
+                <div class="ostukorv"><img src="media/must_ostukorv.svg" alt="Ostukorv" height="20px"></div>
+            </div>
+        </nav>
     </header>
     
-    <section>
+    <section id="kontakt">
         <div class="kontakt">
             <h3>Saada tuulega tervitusi</h3>
             <h5>Ootame huviga sinu kirja - olgu sul mõni küsimus, idee, koostööpakkumine või on soov tulla grupiga Hundioru tuulikut külastama.</h5>
-            <div>
+            <div class="form_inputs">
                 <form action="/action_page.php" class="kontaktivorm">
                     <div class="inputid">
                         <input type="text" id="nimi" name="nimi" placeholder="Nimi" class="inputi_stiil">

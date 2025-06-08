@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toode</title>
+    <link rel="stylesheet" href="style/toode.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cedarville+Cursive&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        if (dots.length > 0) {
+            dots[slideIndex - 1].className += " active";
+        }
+    }
+
+    // Make plusSlides and currentSlide globally accessible (optional, if needed)
+    window.plusSlides = plusSlides;
+    window.currentSlide = currentSlide;
+});
+</script>
+</head>
+<body>
+    <header>
+        <a href="/Moodul2/index.html"><img src="media/must_logo.svg" alt="Logo"></a>
+        <nav class="navigatsioon">
+            <a href="/Moodul2/pood.html"><p>Pood</p></a>
+            <a href="/Moodul2/annetus.html"><p>Annetamine</p></a>
+            <a href="/Moodul2/kontakt.html"><button>Kirjuta meile</button></a>
+            <img src="media/must_ostukorv.svg" alt="Ostukorv" height="20px">
+        </nav>
+    </header>
+
+    <section id="toode">
+        <div class="pildi_carousel">
+            <div class="carousel slideshow-container">
+                <div class="mySlides fade">
+                    <img src="media/e-poe_pildid/matcha_kauss.jpg" alt="Matcha kausi esimene pilt" class="toote_foto">
+                </div>
+                <div class="mySlides fade">
+                    <img src="media/e-poe_pildid/matcha_kauss1.jpg" alt="Matcha kausi esimene pilt" class="toote_foto">
+                </div>
+                <div class="mySlides fade">
+                    <img src="media/e-poe_pildid/matcha_kauss2.jpg" alt="Matcha kausi esimene pilt" class="toote_foto">
+                </div>
+                <div class="mySlides fade">
+                    <img src="media/e-poe_pildid/matcha_kauss3.jpg" alt="Matcha kausi esimene pilt" class="toote_foto">
+                </div>
+                <a class="prev" onclick="plusSlides(-1)"><img src="media/valged_nooled.svg" alt="" style="transform: rotate(180deg);"></a>
+                <a class="next" onclick="plusSlides(1)"><img src="media/valged_nooled.svg" alt=""></a>
+            </div>
+            <div class="lisa_fotod">
+                <img src="media/e-poe_pildid/matcha_kauss1.jpg" alt="Matcha kausi teine pilt" class="lisa_toote_fotod">
+                <img src="media/e-poe_pildid/matcha_kauss2.jpg" alt="Matcha kausi kolmas pilt" class="lisa_toote_fotod">
+                <img src="media/e-poe_pildid/matcha_kauss3.jpg" alt="Matcha kausi neljas pilt" class="lisa_toote_fotod">
+            </div>
+        </div>
+        <div class="toode_kirjeldus">
+            <h5>Tooted > Keraamika</h5>
+            <h4>Keraamiline matcha kauss</h4>
+            <h5>€ 15.00</h5>
+            <p>See kauss on kui väike kunstiteos - erksavärviline glasuur kohtub pehme kujuga, tuues lauale rõõmu ja omapära. Sõna “Matcha” põhjas vihjab rahule, hetkes olemisele ja teadlikule nautimisele – olgu see siis hommikune tee, magustoit või midagi muud.</p>
+            <h5>SUURUS</h5>
+            <button class="button-third" disabled>One Size</button>
+            <h5>VÄRV</h5>
+            <button class="button-third" disabled>Kirju</button>
+            <button class="button-forth ostukorv">Lisa korvi</button>
+        </div>
+    </section>
+
+    <div class="eraldusriba">
+        <img src="media/eraldusriba.svg" alt="sektsiooni lõpp">
+    </div>
+
+    <footer>
+        <div class="jaluse_sisu">
+            <div>
+                <h4>Hundioru</h4>
+                <li><p>Kontakt</p></li>
+                <li><p>Annetamine</p></li>
+                <div class="sotsmeedia_ikoonid">
+                    <img src="media/youtube_icon.svg" alt="Youtube logo" width="24px">
+                    <img src="media/instagram_icon.svg" alt="Instagrami logo" height="24px">
+                    <img src="media/facebook_icon.svg" alt="Facebooki logo" height="24px">
+                </div>
+            </div>
+            <div>
+                <h4>Pood</h4>
+                <li><p>E-pood</p></li>
+                <li><p>Kohaletoimetamine</p></li>
+                <li><p>Tagastusõigus</p></li>
+            </div>
+        </div>
+        <div>
+            <p><b>Kõik õigused kaitstud. Hundioru, Viljandimaa, tel. 56731208, hundioru@hundioru.ee.</b></p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

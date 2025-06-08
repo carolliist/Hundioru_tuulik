@@ -30,7 +30,8 @@ h4 {
     font-weight: 400;
     font-style: normal;
     font-size: 2.375rem;
-    color: black; 
+    color: black;
+    line-height: 1.2; 
 }
 
 h5 {
@@ -103,6 +104,30 @@ button {
     font-weight: 800;
 }
 
+button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.button-secondary:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+}
+
+.button-third:hover {
+    background-color: black;
+    border: 3px solid black;
+    color: white;
+}
+
+.button-forth:hover {
+    background-color: white;
+    border: 3px solid black;
+    color: black;
+}
+
+/*Avalehe style*/
+
 #hero {
     background-image: url("../media/Tuulik2.jpg");
     background-size: cover;
@@ -118,16 +143,23 @@ button {
     z-index: 1;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero_tekst {
     display: flex;
     flex-direction: column;
-    margin: 200px 50px;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
 .hero_tekst h1 {
-    margin-top: 200px;
+    
     margin-bottom: 20px;
 }
 
@@ -135,6 +167,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 50px 100px;
+    position: relative;
 }
 
 .navigatsioon {
@@ -152,19 +185,22 @@ header {
     font-weight: 500;
 }
 
-.ajaloo_sektsioon {
+#ajalugu {
     display: flex;
     gap: 50px;
     align-items: center;
-    margin-top: 150px;
     justify-content: center;
+    margin: 100px;
 }
 
 .ajaloo_pildid {
     display: grid;
-    grid-template-columns: 292px 292px;
-    grid-template-rows: repeat(2, 292px);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
     gap: 20px;
+    aspect-ratio: 1/1;
+    max-width: 700px;
+    max-height: 600px;
 }
 
 .tuuliku_pilt {
@@ -198,6 +234,7 @@ header {
     display: flex;
     flex-direction: column;
     max-width: 900px;
+    min-width: 400px;
 }
 
 .ajaloo_tekst h4 {
@@ -210,7 +247,7 @@ header {
 }
 
 #inimesed {
-    margin: 150px 200px;
+    margin: 100px;
     justify-content: center;
     text-align: center;
 }
@@ -225,6 +262,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .inimesed_pildid {
@@ -234,10 +272,11 @@ header {
 }
 
 .inimene_pilt {
-    max-width: 400px;
-    height: 100%;
+    width: 30vw;
+    height: 40vw;
     object-fit: cover;
     border-radius: 30px;
+    filter: brightness(75%);
 }
 
 .inimesed_tekst h5 {
@@ -247,23 +286,27 @@ header {
 }
 
 .inimesed_pildid h4 {
-    margin-top: 10px;
+    margin-top: 15px;
+    line-height: 1;
 }
 
 .inimesed_pildid h5 { 
-    margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 .inimesed_pildid p { 
     max-width: 375px;
     color: black;
     text-align: center;
+    margin-top: 10px;
 }
 
 #tegevused {
-    margin: 150px 200px;
+    margin: 100px;
     justify-content: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .tegevused_tekst {
@@ -271,14 +314,27 @@ header {
     flex-direction: column;
     justify-self: center;
     max-width: 1100px;
+    align-self: center;
 }
 
 .tegevused_pildid {
     display: grid;
-    grid-template-columns: 400px 350px 400px;
-    grid-template-rows: 323px 258px;
+    grid-template-columns: 1.14fr 1fr 1.14fr;
+    grid-template-rows: 1.25fr 1fr;
+    aspect-ratio: 6/3;
     gap: 20px;
     justify-content: center;
+}
+
+.tegevused_overlay {
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    border-radius: 30px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .ekskursioon {
@@ -418,20 +474,27 @@ header {
 
 .grupi_tekst {
     display: flex;
+    flex-direction: column;
     margin-top: 20px;
     max-width: 1000px;
     justify-self: center;
+    align-items: center;
 }
 
 #annetus {
     display: flex;
+    flex-direction: column;
     margin: 100px;
     justify-self: center;
+    align-items: center;
 }
 
 .annetus_tekst {
+    display: flex;
+    flex-direction: column;
     max-width: 1000px;
     text-align: center;
+    align-items: center;
 }
 
 .annetus_tekst h5 {
@@ -454,7 +517,7 @@ header {
 footer {
     display: flex;
     flex-direction: column;
-    padding: 30px 50px;
+    padding: 30px 100px;
     gap: 100px;
 }
 
@@ -478,8 +541,202 @@ footer p {
 }
 
 .eraldusriba {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow: hidden;
+    position: relative;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.eraldusriba img {
+    width: 110%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    min-height: 100px;
+    left: -20px;
+    position: relative;
+}
+
+/* Telefoni vaade */
+@media screen and (max-width: 667px) {
+    
+    .inimesed_sektsioon {
+        flex-direction: column;
+    }
+
+    .tegevused_pildid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ekskursioon {
+        height: 300px;
+    }
+
+    .tootuba {
+        height: 300px;
+    }
+
+    .matk {
+        height: 300px;
+    }
+
+    .oobimine {
+        height: 300px;
+    }
+
+
+    .inimene_pilt {
+        width: 60vw; 
+        height: 80vw; 
+    }
+
+    .jaluse_sisu {
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 1.5rem; /* 20% väiksem kui 4.688rem */
+    }
+    
+    h2 {
+        font-size: 0.875rem; /* 20% väiksem kui 1.875rem */
+    }
+    
+    h3 {
+        font-size: 1.875rem; /* 20% väiksem kui 3.5rem */
+    }
+    
+    h4 {
+        font-size: 1.5rem; /* 20% väiksem kui 2.375rem */
+        line-height: 1.2;
+    }
+    
+    h5 {
+        font-size: 1rem; /* 20% väiksem kui 1.25rem */
+    }
+    
+    p {
+        font-size: 0.875rem; /* 20% väiksem kui 1.125rem */
+    }
+
+    #ajalugu {
+        margin: 25px;
+    }
+
+    #inimesed {
+        margin: 25px;
+    }
+
+    #tegevused {
+        margin: 25px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #ajalugu {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .ajaloo_tekst {
+        width: 100%;
+        min-width: 0px;
+    }
+
+    #ajalugu p {
+        text-align: center;
+    }
+
+}
+
+
+/* Burgermenu stiil */
+.navigatsioon button:hover {
+    background: white;
+    color: #333;
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+
+/* Mobiili vaate burger menüü */
+.mobile-nav {
+    display: none;
     position: absolute;
+    top: 0px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.50);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     width: 100%;
-    z-index: 2;
-    bottom: 25px;
+    height: max-content;
+}
+
+.mobile-nav-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    margin: 50px;
+}
+
+.mobile-nav.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.mobile-nav a {
+    text-decoration: none;
+}
+
+.mobile-nav p {
+    color: rgb(0, 0, 0);
+}
+
+.mobile-nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+    margin-top: 200px;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+}
+
+.mobile-nav button:hover {
+    background: white;
+    color: #333;
+}
+
+/* Media query 900px ja väiksemaks */
+@media screen and (max-width: 900px) {
+
+    .navigatsioon {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
 }

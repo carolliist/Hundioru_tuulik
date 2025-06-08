@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-pood</title>
+    <link rel="stylesheet" href="style/pood.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cedarville+Cursive&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <script>
+        function toggleDropdown(id) {
+            document.querySelectorAll('.dropdown-content').forEach(el => {
+                if (el.id !== id) el.classList.remove('show');
+            });
+            document.getElementById(id).classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn') && !event.target.closest('.dropbtn')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            }
+        };
+
+        const minThumb = document.querySelector('.thumb.min');
+        const maxThumb = document.querySelector('.thumb.max');
+        const range = document.querySelector('.range');
+        const minValue = document.getElementById('minValue');
+        const maxValue = document.getElementById('maxValue');
+        const minPrice = document.getElementById('minPrice');
+        const maxPrice = document.getElementById('maxPrice');
+        const slider = document.querySelector('.multi-slider');
+        const sliderRect = slider.getBoundingClientRect();
+
+        let isDragging = false;
+        let activeThumb = null;
+        const min = 0;
+        const max = 100;
+
+        function updateSlider() {
+        const minPos = parseInt(minThumb.style.left || '0');
+        const maxPos = parseInt(maxThumb.style.left || '100');
+        
+        // Update range fill
+        range.style.left = minPos + '%';
+        range.style.width = (maxPos - minPos) + '%';
+        
+        // Update values
+        const minVal = Math.round(min + (max - min) * (minPos / 100));
+        const maxVal = Math.round(min + (max - min) * (maxPos / 100));
+        
+        minValue.textContent = minVal;
+        maxValue.textContent = maxVal;
+        minPrice.value = minVal;
+        maxPrice.value = maxVal;
+        }
+
+        function handleMouseDown(e) {
+        isDragging = true;
+        activeThumb = e.target;
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
+        }
+
+        function handleMouseMove(e) {
+        if (!isDragging) return;
+        
+        const sliderWidth = sliderRect.width;
+        const offsetX = e.clientX - sliderRect.left;
+        let percentage = (offsetX / sliderWidth) * 100;
+        
+        // Keep within bounds
+        percentage = Math.max(0, Math.min(100, percentage));
+        
+        if (activeThumb === minThumb) {
+            const maxPos = parseInt(maxThumb.style.left || '100');
+            percentage = Math.min(percentage, maxPos - 1);
+            activeThumb.style.left = percentage + '%';
+        } else {
+            const minPos = parseInt(minThumb.style.left || '0');
+            percentage = Math.max(percentage, minPos + 1);
+            activeThumb.style.left = percentage + '%';
+        }
+        
+        updateSlider();
+        }
+
+        function handleMouseUp() {
+        isDragging = false;
+        activeThumb = null;
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+        }
+
+        // Initialize slider
+        minThumb.style.left = '10%';
+        maxThumb.style.left = '90%';
+        updateSlider();
+
+        // Event listeners
+        minThumb.addEventListener('mousedown', handleMouseDown);
+        maxThumb.addEventListener('mousedown', handleMouseDown);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+        sliderRect = slider.getBoundingClientRect();
+        });
+</script>
+
+</head>
+<body>
+    <section id="hero">
+        <div class="overlay">
+            <header>
+                <a href="/Moodul2/index.html"><img src="media/desktop_logo.svg" alt="Logo"></a>
+                <nav class="navigatsioon">
+                    <a href="/Moodul2/pood.html"><p>Pood</p></a>
+                    <a href="/Moodul2/annetus.html"><p>Annetamine</p></a>
+                    <a href="/Moodul2/kontakt.html"><button>Kirjuta meile</button></a>
+                    <img src="media/ostukorv.svg" alt="Ostukorv" height="20px">
+                </nav>
+            </header>
+            <div class="hero_tekst">
+                <h1>Kingitused, millel on lugu</h1>
+                <h2>Ajatu ilu, kohalik käsitöö ja südamega loodud kingitused.</h2>
+            </div>
+        </div>    
+    </section>
+
+    <div class="eraldusriba">
+        <img src="media/eraldusriba.svg" alt="sektsiooni lõpp">
+    </div>
+
+    <section id="epoe_pealkiri">
+        <h3>Tooted</h3>
+        <div class="dropdown_menud">
+            <div class="dropdown">
+                <button onclick="toggleDropdown('priceDropdown')"  class="dropbtn">Hind
+                    <img src="media/dropnool.svg" alt="avanev menu nool" height="7px">
+                </button>
+                <div id="priceDropdown" class="dropdown-content">
+                    <div class="slidecontainer">
+                        <div class="multi-slider">
+                            <div class="track"></div>
+                            <div class="range"></div>
+                            <div class="thumb min"></div>
+                            <div class="thumb max"></div>
+                        </div>
+                        <div class="values">
+                            <span>Min: <span id="minValue">10</span>€</span>
+                            <span>Max: <span id="maxValue">90</span>€</span>
+                        </div>
+                        <input type="hidden" id="minPrice" value="10">
+                        <input type="hidden" id="maxPrice" value="90">
+                    </div>   
+                </div>
+            </div>
+            <div class="dropdown">
+                <button onclick="toggleDropdown('categoryDropdown')"  class="dropbtn">Kategooriad
+                    <img src="media/dropnool.svg" alt="avanev menu nool" height="7px">
+                </button>
+                <div id="categoryDropdown" class="dropdown-content">
+                    <p>Keraamika</p>
+                    <p>Aksessuaarid</p>
+                    <p>Meened</p>
+                    <p>Tekstiil</p>
+                </div>
+            </div>
+         </div>
+    </section>
+
+     <section id="epood">
+        <div>
+            <div class="epood_sektsioon">
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/koorekann.jpg" alt="Koorekann" class="toote_pilt">
+                    <h5>Keraamiline koorekann</h5>
+                    <p>€ 30.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/matcha_kauss.jpg" alt="Matcha kauss" class="toote_pilt">
+                    <h5>Keraamiline matcha kauss</h5>
+                    <p>€ 15.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/makramee_taime_hoidja.jpg" alt="Makramee taimehoidja" class="toote_pilt">
+                    <h5>Makramee taimehoidja</h5>
+                    <p>€ 25.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/linane_sark.jpg" alt="Linane sark" class="toote_pilt">
+                    <h5>Linane särk</h5>
+                    <p>€ 40.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="epood">
+        <div>
+            <div class="epood_sektsioon">
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/supikauss.jpg" alt="Supikauss" class="toote_pilt">
+                    <h5>Keraamiline supikauss</h5>
+                    <p>€ 12.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/kauss.jpg" alt="Keraamiline kauss" class="toote_pilt">
+                    <h5>Keraamiline värviline kauss</h5>
+                    <p>€ 8.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/linane_kott.jpg" alt="Linane kott" class="toote_pilt">
+                    <h5>Linane kott</h5>
+                    <p>€ 25.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/ummargune_vaas.jpg" alt="Keraamiline ummargune vaas" class="toote_pilt">
+                    <h5>Keraamiline vaas</h5>
+                    <p>€ 60.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="epood">
+        <div>
+            <div class="epood_sektsioon">
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/tapiline_vaas.jpg" alt="Tapiline vaas" class="toote_pilt">
+                    <h5>Keraamiline supikauss</h5>
+                    <p>€ 30.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/olimaal_tuulik.jpg" alt="Olimaal tuuliku pildiga" class="toote_pilt">
+                    <h5>Raamiga õlimaal "Tuulik"</h5>
+                    <p>€ 70.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/kaelaga_vaas.jpg" alt="Olimaal tuuliku pildiga" class="toote_pilt">
+                    <h5>Keraamiline vaas</h5>
+                    <p>€ 45.00</p>
+                </div>
+                <div class="epood_pildid">
+                    <img src="media/e-poe_pildid/olimaal_loodus.jpg" alt="Olimaal looduse pildiga" class="toote_pilt">
+                    <h5>Raamiga õlimaal "Loodus"</h5>
+                    <p>€ 50.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lehekulje_numbrid">
+        <h5>1</h5>
+        <h5>2</h5>
+        <h5>3</h5>
+        <img src="media/nooled.svg" alt="Edasi kerimise nooled">
+    </section>
+
+    <div class="eraldusriba">
+        <img src="media/eraldusriba.svg" alt="sektsiooni lõpp">
+    </div>
+
+     <footer>
+        <div class="jaluse_sisu">
+            <div>
+                <h4>Hundioru</h4>
+                <li><p>Kontakt</p></li>
+                <li><p>Annetamine</p></li>
+                <div class="sotsmeedia_ikoonid">
+                    <img src="media/youtube_icon.svg" alt="Youtube logo" width="24px">
+                    <img src="media/instagram_icon.svg" alt="Instagrami logo" height="24px">
+                    <img src="media/facebook_icon.svg" alt="Facebooki logo" height="24px">
+                </div>
+            </div>
+            <div>
+                <h4>Pood</h4>
+                <li><p>E-pood</p></li>
+                <li><p>Kohaletoimetamine</p></li>
+                <li><p>Tagastusõigus</p></li>
+            </div>
+        </div>
+        <div>
+            <p><b>Kõik õigused kaitstud. Hundioru, Viljandimaa, tel. 56731208, hundioru@hundioru.ee.</b></p>
+        </div>
+    </footer>
+</body>
+</html>

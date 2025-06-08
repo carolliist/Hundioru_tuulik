@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.slidecontainer {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.multi-slider {
+  position: relative;
+  height: 25px;
+  margin: 20px 0;
+}
+
+.multi-slider .track {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 5px;
+  background: #d3d3d3;
+  border-radius: 5px;
+}
+
+.multi-slider .range {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 5px;
+  background: #04AA6D;
+  border-radius: 5px;
+}
+
+.multi-slider .thumb {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  z-index: 2;
+}
+
+.multi-slider .thumb.min {
+  left: 0;
+}
+
+.multi-slider .thumb.max {
+  left: 100%;
+}
+
+.values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.values span {
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h1>Hinnavahemiku slider</h1>
+<p>Liiguta mummusid, et määrata hinna vahemik</p>
+
+<div class="slidecontainer">
+  <div class="multi-slider">
+    <div class="track"></div>
+    <div class="range"></div>
+    <div class="thumb min"></div>
+    <div class="thumb max"></div>
+  </div>
+  <div class="values">
+    <span>Min: <span id="minValue">10</span>€</span>
+    <span>Max: <span id="maxValue">90</span>€</span>
+  </div>
+  <input type="hidden" id="minPrice" value="10">
+  <input type="hidden" id="maxPrice" value="90">
+</div>
+
+<script>
+const minThumb = document.querySelector('.thumb.min');
+const maxThumb = document.querySelector('.thumb.max');
+const range = document.querySelector('.range');
+const minValue = document.getElementById('minValue');
+const maxValue = document.getElementById('maxValue');
+const minPrice = document.getElementById('minPrice');
+const maxPrice = document.getElementById('maxPrice');
+const slider = document.querySelector('.multi-slider');
+const sliderRect = slider.getBoundingClientRect();
+
+let isDragging = false;
+let activeThumb = null;
+const min = 0;
+const max = 100;
+
+function updateSlider() {
+  const minPos = parseInt(minThumb.style.left || '0');
+  const maxPos = parseInt(maxThumb.style.left || '100');
+ 
+  // Update range fill
+  range.style.left = minPos + '%';
+  range.style.width = (maxPos - minPos) + '%';
+ 
+  // Update values
+  const minVal = Math.round(min + (max - min) * (minPos / 100));
+  const maxVal = Math.round(min + (max - min) * (maxPos / 100));
+ 
+  minValue.textContent = minVal;
+  maxValue.textContent = maxVal;
+  minPrice.value = minVal;
+  maxPrice.value = maxVal;
+}
+
+function handleMouseDown(e) {
+  isDragging = true;
+  activeThumb = e.target;
+  document.addEventListener('mousemove', handleMouseMove);
+  document.addEventListener('mouseup', handleMouseUp);
+}
+
+function handleMouseMove(e) {
+  if (!isDragging) return;
+ 
+  const sliderWidth = sliderRect.width;
+  const offsetX = e.clientX - sliderRect.left;
+  let percentage = (offsetX / sliderWidth) * 100;
+ 
+  // Keep within bounds
+  percentage = Math.max(0, Math.min(100, percentage));
+ 
+  if (activeThumb === minThumb) {
+    const maxPos = parseInt(maxThumb.style.left || '100');
+    percentage = Math.min(percentage, maxPos - 1);
+    activeThumb.style.left = percentage + '%';
+  } else {
+    const minPos = parseInt(minThumb.style.left || '0');
+    percentage = Math.max(percentage, minPos + 1);
+    activeThumb.style.left = percentage + '%';
+  }
+ 
+  updateSlider();
+}
+
+function handleMouseUp() {
+  isDragging = false;
+  activeThumb = null;
+  document.removeEventListener('mousemove', handleMouseMove);
+  document.removeEventListener('mouseup', handleMouseUp);
+}
+
+// Initialize slider
+minThumb.style.left = '10%';
+maxThumb.style.left = '90%';
+updateSlider();
+
+// Event listeners
+minThumb.addEventListener('mousedown', handleMouseDown);
+maxThumb.addEventListener('mousedown', handleMouseDown);
+
+// Handle window resize
+window.addEventListener('resize', () => {
+  sliderRect = slider.getBoundingClientRect();
+});
+</script>
+
+</body>
+</html>
